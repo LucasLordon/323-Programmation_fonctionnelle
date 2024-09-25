@@ -1,4 +1,6 @@
-﻿// 4 players
+﻿using System.Linq;
+
+// 4 players
 List<Player> players = new List<Player>()
 {
     new Player("Joe", 32),
@@ -7,23 +9,26 @@ List<Player> players = new List<Player>()
     new Player("Averell", 25)
 };
 
-// Initialize search
+/*// Initialize search
 Player elder = players.First();
 int biggestAge = elder.Age;
 
 // search
-foreach (Player p in players)
+foreach (Player d in players)
 {
-    if (p.Age > biggestAge) // memorize new elder
+    if (d.Age > biggestAge) // memorize new elder
     {
-        elder = p;
-        biggestAge = p.Age; // for future loops
+        elder = d;
+        biggestAge = d.Age; // for future loops
     }
 }
+*/
 
-Console.WriteLine($"Le plus agé est {elder.Name} qui a {elder.Age} ans");
+Player p = players.OrderBy(p => p.Age).Last();
+Console.WriteLine($"Le plus agé est {p.Name} qui a {p.Age} ans");
 
 Console.ReadKey();
+
 
 public class Player
 {
